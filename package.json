@@ -16,6 +16,6 @@
     "pg": "^7.4.3"
   },
   "devDependencies": {},
-  "author": "",
+  "author": "", 
   "license": "ISC"
 }
