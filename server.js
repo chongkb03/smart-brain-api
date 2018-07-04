@@ -11,10 +11,8 @@ const Clarifai = require('clarifai');
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : 'kbcho1145',
-    database : 'smart-brain'
+    connectionString : process.env.DATABASE_URL,
+    ssl: true
   }
 });
 
@@ -73,9 +71,11 @@ app.get('/',(req, res) => {
 
 	console.log('inside get');
 
-	res.json(database.users);
-
-})
+	db('users')
+   .select('*').from('users')
+   .then(data => res.json(data))
+   .catch(e => console.log('Error getting recs from users table'+ e))
+ }
 
 
 app.post('/signin', (req,res)=> {
