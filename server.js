@@ -75,7 +75,7 @@ app.get('/',(req, res) => {
    .select('*').from('users')
    .then(data => res.json(data))
    .catch(e => console.log('Error getting recs from users table'+ e))
- }
+ })
 
 
 app.post('/signin', (req,res)=> {
